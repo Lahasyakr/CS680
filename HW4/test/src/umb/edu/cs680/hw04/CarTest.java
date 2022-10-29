@@ -40,8 +40,8 @@ class CarTest {
 	
 	@Test
 	public void testCarDetails() {
-		Car c3=new Car("Toyota","RAV4",60,2018,50000);
-		String [] expected= {"Toyota","RAV4","2018"};
+		Car c3=new Car("porsche","Taycan",250,2020,120000);
+		String [] expected= {"porsche","Taycan","2020"};
 		assertArrayEquals(expected, carToStringArray(c3));
 	}
 }

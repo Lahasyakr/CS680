@@ -39,7 +39,7 @@ public class Car {
 	}
 	
 	public static void main(String args[]) {
-		Car c=new Car("Toyota","RAV4",80,2018,85000);
+		Car c=new Car("Audi","Q4 Etron",320,2022,50000);
 		System.out.println("Make    :"+c.get_make());
 		System.out.println("Model    :"+c.get_model());
 		System.out.println("Mileage  :"+c.get_mileage());
