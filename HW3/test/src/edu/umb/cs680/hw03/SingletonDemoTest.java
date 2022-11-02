@@ -1,11 +1,10 @@
-
+package edu.umb.cs680.hw03;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import umb.edu.cs680.hw03.SingletonDemo;
 
 public class SingletonDemoTest {
     @Test
