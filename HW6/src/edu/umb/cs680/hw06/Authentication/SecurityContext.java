@@ -4,8 +4,6 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
-import javax.naming.AuthenticationException;
-
 public class SecurityContext {
 
     private State state;

@@ -1,9 +1,5 @@
 package edu.umb.cs680.hw06.ModelXYZ;
 
-import java.io.IOError;
-
-import javax.security.sasl.AuthenticationException;
-
 import edu.umb.cs680.hw06.Authentication.EncryptedString;
 import edu.umb.cs680.hw06.Authentication.SecurityContext;
 import edu.umb.cs680.hw06.PrintingFramework.PrintJobExcecutor;
