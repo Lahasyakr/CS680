@@ -20,19 +20,19 @@ public class LoggedIn implements State {
 
     @Override
     public void logout() {
-        System.out.println("User has been logged out !!");
+        System.out.println("User has been logged out!");
         ctx.changeState(LoggedOut.getInstance(ctx));
     }
 
     @Override
-    public void login(EncryptedString pwd) {
+    public void login(EncryptedString pwd) throws Exception {
         if (!ctx.isActive()) {
             ctx.changeState(LoggedOut.getInstance(ctx));
             System.out.println("User has been logged out before logging in again - inactive user !!");
             ctx.login(pwd);
         } else {
             ctx.lastLoginTimeStamp.add(LocalDateTime.now());
-            System.out.println("Active user has been logged in !!");
+            System.out.println("FirstTime Login  or Active user has been logged in !!");
         }
     }
 }

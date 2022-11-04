@@ -14,9 +14,14 @@ public class EncryptedString {
         }
     }
 
+    //Encoding data
     public String Encrypt(String stringData) throws IOException {
         byte[] byteData = stringData.getBytes();
         String base64String = Base64.getEncoder().encodeToString(byteData);
         return base64String;
+    }
+
+    public String getEncryptedData() {
+        return encryptedData;
     }
 }

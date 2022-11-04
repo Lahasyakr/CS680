@@ -1,12 +1,13 @@
 package edu.umb.cs680.hw05;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         
-        SecurityContext ctx = SecurityContext.getInstance();
+        SecurityContext ctx = new SecurityContext(new User("Lahasya", new EncryptedString("lahasya")));
         System.out.println(ctx.getState() + " " + LoggedOut.getInstance(ctx));
         //ctx.changeState(LoggedOut.getInstance());
-        EncryptedString pwd = new EncryptedString("lahasya");
+        //ctx.changeState(LoggedIn.getInstance(ctx));
+        EncryptedString pwd = new EncryptedString("Lahasya");
         ctx.login(pwd);
         try{
             Thread.sleep(50000);

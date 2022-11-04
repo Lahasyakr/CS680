@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class SecurityContextTest {
+public class SecurityTest {
     @Test
     public void verifyCtxInitialObj() {
         SecurityContext ctx = new SecurityContext(new User("Lahasya", new EncryptedString("lahasya")));

@@ -4,9 +4,9 @@ public class User {
         private String username;
         private EncryptedString pwd;
 
-        public User(String string, EncryptedString encryptedString) {
-            this.username = username;
-            this.pwd = pwd;
+        public User(String username1, EncryptedString password) {
+            this.username = username1;
+            this.pwd = password;
         }
         
         public String getUserName() {

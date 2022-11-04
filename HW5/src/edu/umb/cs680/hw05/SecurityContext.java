@@ -9,22 +9,12 @@ public class SecurityContext {
     private State state;
     private User user;
 
-    private SecurityContext(User user) {
-        this.user = user;
+    public SecurityContext(User userobj) {
+        this.user = userobj;
         this.state = LoggedOut.getInstance(this);
     }
 
-    private static SecurityContext instance;
-
     LinkedList<LocalDateTime> lastLoginTimeStamp = new LinkedList<LocalDateTime>();
-
-    public static SecurityContext getInstance() {
-        if (instance == null) {
-            User userObj = new User("Lahasya", new EncryptedString("lahasya"));
-            instance = new SecurityContext(userObj);
-        }
-        return instance;
-    }
 
     public void changeState(State state) {
         this.state = state;
@@ -34,8 +24,13 @@ public class SecurityContext {
         return state;
     }
 
-    public void login(EncryptedString pwd) {
-        state.login(pwd);
+    public void login(EncryptedString pwd) throws Exception {
+        try {
+            state.login(pwd);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
     }
 
     public void logout() {
@@ -43,13 +38,16 @@ public class SecurityContext {
     }
 
     public boolean isActive() {
-        Duration diff = Duration.between(lastLoginTimeStamp.getLast(), LocalDateTime.now());
-        System.out
-                .println(lastLoginTimeStamp.getLast() + " " + " " + diff.getSeconds() + " we are in isActive Method!!");
-        if (diff.getSeconds() > 30) {
-            return false;
-        } else {
+        if (lastLoginTimeStamp.size() == 0) {
             return true;
+        } else {
+            // System.out.println(lastLoginTimeStamp.getLast());
+            Duration diff = Duration.between(lastLoginTimeStamp.getLast(), LocalDateTime.now());
+            if (diff.getSeconds() > 30) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 }
