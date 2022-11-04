@@ -8,13 +8,13 @@ import edu.umb.cs680.hw06.ModelXYZ.PrintJobExcecutorXyz;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        User userObj = new User("Lahasya", new EncryptedString("Lahasya123"));
+        User userObj = new User("Lahasya", new EncryptedString("Lahasya"));
         SecurityContext ctx = new SecurityContext(userObj);
 
         PrintJobExcecutorAbc printAbc = new PrintJobExcecutorAbc();
-        printAbc.execute(new PrintJobExcecutorAbc(), userObj.getpwd(), ctx);
+        printAbc.execute(printAbc,null, null);
 
         PrintJobExcecutorXyz printXyz = new PrintJobExcecutorXyz();
-        printXyz.execute(new PrintJobExcecutorAbc(), userObj.getpwd(), ctx);
+        printXyz.execute(printXyz, userObj.getpwd(), ctx);
     }
 }
