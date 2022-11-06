@@ -1,10 +1,10 @@
 package edu.umb.cs680.hw06.ModelXYZ;
 
+import edu.umb.cs680.hw06.PrintJob;
 import edu.umb.cs680.hw06.Authentication.EncryptedString;
 import edu.umb.cs680.hw06.Authentication.SecurityContext;
-import edu.umb.cs680.hw06.PrintingFramework.PrintJobExcecutor;
 
-public class PrintJobExcecutorXyz extends PrintJobExcecutor {
+public class PrintJobExcecutor extends edu.umb.cs680.hw06.PrintingFramework.PrintJobExcecutor {
 
     @Override
     protected void doAuthentication(EncryptedString pwd, SecurityContext ctx) throws Exception {
@@ -22,8 +22,8 @@ public class PrintJobExcecutorXyz extends PrintJobExcecutor {
     }
 
     @Override
-    protected void doPrint() {
-        System.out.println("Printing....!!");
+    protected void doPrint(PrintJob job) {
+        System.out.println("Printing....!!, given printjob has been completed-version XYZ");
     }
 
     @Override
