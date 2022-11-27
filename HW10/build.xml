@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="HW10" xmlns:ivy="antlib:org.apache.ivy.ant">
+   
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="src" location="src" />
+    <property name="bin" location="bin" />
+    <property name="test.src" location="test/src" />
+    <property name="test.bin" location="test/bin" />
+    <property name="reports" location="reports"/>
+
+    <ivy:retrieve/>
+
+    <path id="classpath">
+        <pathelement location="bin" />
+        <pathelement location="test/bin" />
+        <fileset dir="lib" includes="*jupiter.api*.jar" />
+        <fileset dir="lib" includes="*jupiter.engine*.jar" />
+        <fileset dir="lib" includes="*jupiter.jupiter.params*.jar" />
+        <fileset dir="lib" includes="*apiguardian*.jar" />
+        <fileset dir="lib" includes="*opentest4j*.jar" />
+        <fileset dir="lib" includes="*platform.commons*.jar" />
+        <fileset dir="lib" includes="*platform.engine*.jar" />
+        <fileset dir="lib" includes="*platform.launcher*.jar" />
+        <fileset dir="lib" includes="*platform.runner*.jar" />
+        <fileset dir="lib" includes="*platform.suite.api*.jar" />
+        <fileset dir="lib"><include name="**/*.jar" /></fileset>
+
+    </path>
+
+     <target name="init">
+        <mkdir dir="${bin}"/>
+        <mkdir dir="${test.bin}"/>
+        <mkdir dir="${reports}"/>
+    </target>
+    
+    <target depends="clean" name="cleanall"/>
+    <target depends="clean, compile, test" name="build"/>
+
+    <target name="compile" depends="init">
+         <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
+            <classpath refid="classpath"/>
+             <include name="**/*.java"/>
+        </javac>
+        <javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
+            <classpath refid="classpath"/>
+            <include name="**/*Test.java"/>
+        </javac>
+    </target>
+
+
+    <target name="test" depends="compile">
+        <junitlauncher haltOnFailure="true" printSummary="true">
+            <classpath refid="classpath"/>
+            <testclasses outputdir="${reports}">
+                <fileset dir="${test.bin}">
+                    <include name="**/*Test.class"/>
+                </fileset>
+                <listener type="legacy-xml" sendSysOut="true" sendSysErr="true"/>
+                <listener type="legacy-plain" sendSysOut="true" />
+            </testclasses>
+        </junitlauncher>
+    </target>
+
+
+    <target name="clean">
+        <delete dir="${reports}"/>
+        <delete dir="${bin}"/>
+        <delete dir="${test.bin}"/>
+    </target>
+
+</project>
