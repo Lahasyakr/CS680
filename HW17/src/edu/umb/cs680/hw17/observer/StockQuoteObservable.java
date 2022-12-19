@@ -5,9 +5,9 @@ import java.util.Map;
 
 
 public class StockQuoteObservable  extends Observable <StockEvent>{
-	  private Map<String, Float> mappings = new HashMap<String, Float>();
+	  private Map<String, Double> mappings = new HashMap<String, Double>();
 
-	void changeQuote(String T, float Q) {
+	void changeQuote(String T, double Q) {
 		mappings.put(T, Q);
 		//setChanged();
 		notifyObservers(new StockEvent(T, Q));

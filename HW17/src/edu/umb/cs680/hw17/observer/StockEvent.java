@@ -2,9 +2,9 @@ package edu.umb.cs680.hw17.observer;
 
 public class StockEvent {
 	private String ticker;
-	private float quote;
+	private double quote;
 	
-	public StockEvent(String T, float Q) {
+	public StockEvent(String T, double Q) {
 		this.ticker = T;
 		this.quote = Q;
 	}
@@ -13,7 +13,7 @@ public class StockEvent {
 		return ticker;
 	}
 	
-	public float getQuote() {
+	public double getQuote() {
 		return quote;
 	}
 }
